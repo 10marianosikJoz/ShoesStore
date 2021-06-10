@@ -11,14 +11,10 @@ import java.util.List;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
 
-
     @Query("select r from Role r")
     List<Role> findAll();
 
     Role findById(long id);
-
-
-
 
 
 }

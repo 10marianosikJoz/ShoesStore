@@ -61,13 +61,9 @@ public class ProductsController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private UserServiceImpl userService;
-
 
     @GetMapping("/")
     public String home(Model model) {
-
 
         List<Size> sizeList = sizeServiceImpl.listAll();
         List<Category> categoryList = categoryServiceImpl.listAll();
@@ -75,29 +71,6 @@ public class ProductsController {
         List<Product> listToFilterProductList = productServiceImpl.listAll();
         List<Product> productList ;
         productList = groupingProductList(listToFilterProductList);
-
-
-//        for (int i = 0; i < productList.size(); i++) {
-//
-//            for (int j = i + 1; j < productList.size(); j++) {
-//
-//                if (productList.get(i).getProductName().equals(productList.get(j).getProductName()) &&
-//                        productList.get(i).getCategory().equals(productList.get(j).getCategory()) &&
-//                        productList.get(i).getPrice().equals(productList.get(j).getPrice().setScale(2)) &&
-//                        productList.get(i).getColors().equals(productList.get(j).getColors()) &&
-//                        !(productList.get(i).getSizes().equals(productList.get(j).getSizes()))) {
-//                    Set<Size> sizes = productList.get(i).getSizes();
-//                    sizes.addAll(productList.get(j).getSizes());
-//                    productList.get(i).setSizes(sizes);
-//                    productList.remove(j);
-//                    j--;
-//                }
-//
-//            }
-//
-//
-//        }
-
 
         model.addAttribute("sizeList", sizeList);
         model.addAttribute("categoryList", categoryList);
@@ -364,7 +337,7 @@ public class ProductsController {
             }
 
         }
-        //  productSizes.add(product.getSizes());
+
         model.addAttribute("shoppingCart", new ShoppingCart());
         model.addAttribute("productToCart", productToCart);
         model.addAttribute("product", product);
@@ -441,7 +414,7 @@ public class ProductsController {
         List<Product> productList = productServiceImpl.listAll();
         List<ShoppingCart> itemList = shoppingCartRepository.findAll();
         User user = (User) userRepository.findByEmail(currentUser.getUsername());
-        BigDecimal finalPrice = BigDecimal.ZERO;
+        BigDecimal finalPrice;
         List<ShoppingCart> userProductCartToDelete = new ArrayList<>();
         List<Product> userProductList = new ArrayList<>();
 

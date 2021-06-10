@@ -17,33 +17,6 @@
             crossorigin="anonymous"></script>
 
 
-    <script type="text/javascript">
-
-
-        $(function(){
-            var requiredCheckboxes = $('.check_box :checkbox[required]');
-            requiredCheckboxes.change(function(){
-                if(requiredCheckboxes.is(':checked')) {
-                    requiredCheckboxes.removeAttr('required');
-                }
-                else {
-                    requiredCheckboxes.attr('required', 'required');
-                }
-            });
-        });
-
-        $(function(){
-            var requiredCheckboxes = $('.check_box2 :checkbox[required]');
-            requiredCheckboxes.change(function(){
-                if(requiredCheckboxes.is(':checked')) {
-                    requiredCheckboxes.removeAttr('required');
-                }
-                else {
-                    requiredCheckboxes.attr('required', 'required');
-                }
-            });
-        });
-    </script>
 </head>
 <body>
 <main>
@@ -118,9 +91,6 @@
 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="block1">
-                            <p>
-                                <img alt="First photo" id="thumbnail" width="100px" height="100px"/>
-                            </p>
                             <label>Photo 1</label>
                             <input th:field="${product.primaryImage}" type="file" name="files"  autofocus="autofocus" class="form-control"  accept="{image/png, image/jpeg, image/jpg}">
 
@@ -128,25 +98,16 @@
 
 
                         <div class="block2">
-                            <p>
-                                <img alt="First photo" id="thumbnail0" width="100px" height="100px"/>
-                            </p>
                             <label>Photo 2</label>
                             <input th:field="${product.secondImage}"  th:object="${product}" type="file" name="files"  autofocus="autofocus"  class="form-control"  accept="{image/png, image/jpeg,  image/jpg}">
                         </div>
 
                         <div class="block3">
-                            <p>
-                                <img alt="First photo" id="thumbnail1" width="100px" height="100px"/>
-                            </p>
                             <label>Photo 3</label>
                             <input th:field="${product.thirdImage}" th:object="${product}" type="file" name="files"  autofocus="autofocus"  class="form-control" accept="{image/png, image/jpeg,  image/jpg}">
                         </div>
 
                         <div class="block4">
-                            <p>
-                                <img alt="First photo" id="thumbnail2" width="100px" height="100px"/>
-                            </p>
                             <label>Photo 4</label>
                             <input th:field="${product.fourthImage}"  th:object="${product}" type="file" name="files"  autofocus="autofocus" class="form-control" accept="{image/png, image/jpeg,  image/jpg}">
                         </div>
@@ -165,6 +126,10 @@
 
 </main>
 <div th:include="footer"></div>
+
+<script src="/js/checkbox_validation.js">
+
+</script>
 </body>
 </html>
 

@@ -7,10 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import webapplication.ShoesShopApp.model.*;
 import webapplication.ShoesShopApp.repository.*;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Set;
-
 @SpringBootApplication
 public class ShoesShopAppApplication implements CommandLineRunner {
 
@@ -32,10 +28,10 @@ public class ShoesShopAppApplication implements CommandLineRunner {
     @Autowired
     ProductRepository productRepository;
 
-  @Autowired
-  UserRepository userRepository;
-  @Autowired
-  ShoppingCartRepository shoppingCartRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    ShoppingCartRepository shoppingCartRepository;
 
 
     public static void main(String[] args) {
@@ -48,7 +44,6 @@ public class ShoesShopAppApplication implements CommandLineRunner {
 
 // start();
     }
-
 
 
     public void start() {
@@ -104,7 +99,7 @@ public class ShoesShopAppApplication implements CommandLineRunner {
         colorRepository.save(new Color("Burlywood"));
 
 
-        addressRepository.save(new Address("Lublin","25","24-340","Poland","Konstantynów"));
+        addressRepository.save(new Address("Lublin", "25", "24-340", "Poland", "Konstantynów"));
 
 
         roleRepository.save(new Role("ROLE_ADMIN"));

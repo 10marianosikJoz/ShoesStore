@@ -28,12 +28,6 @@ public class ProductServiceImpl {
     @Autowired
     private ShoppingCartRepository shoppingCartRepository;
 
-    @Autowired
-    private UserServiceImpl userService;
-
-
-
-
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -93,9 +87,6 @@ public class ProductServiceImpl {
 
     }
 
-    public List<Product> findByCategory(String category){
-        return productRepository.filterByCategory(category);
-    }
 
     public List<Product> getFilteredByCategory(Collection<String> listOfCategoryName){
         List<Product> productList = productRepository.findByCategoryCategoryNameIn(listOfCategoryName);
@@ -231,24 +222,12 @@ public class ProductServiceImpl {
 
    }
 
-    public void substractAmountOfProduct(int amount, long id) {
-       productRepository.substractAmountOfProduct(amount,id);
-    }
 
     public List<ShoppingCart> getShoppingByUserId (long id) {
        return shoppingCartRepository.getShoppingCartByUserId(id);
     }
 
-    public void changeAmountOfProduct(int amount, long id) {
-        List<ShoppingCart> shoppingByUserId = getShoppingByUserId(id);
-        List<Product> userProductList = new ArrayList<>();
 
-        for (ShoppingCart shoppingCart : shoppingByUserId) {
-            userProductList.add(shoppingCart.getProduct());
-            
-        }
-
-    }
 }
 
 

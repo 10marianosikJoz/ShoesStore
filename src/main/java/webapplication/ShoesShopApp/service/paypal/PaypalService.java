@@ -30,9 +30,6 @@ public class PaypalService {
 		Amount amount = new Amount();
 		amount.setCurrency(currency);
 
-
-
-		//total = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
 		amount.setTotal(String.valueOf(total));
 
 		Transaction transaction = new Transaction();
