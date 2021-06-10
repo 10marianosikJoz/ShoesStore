@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/style_2.css}"/>
+    <link rel="stylesheet" th:href="@{/css/payment.css}"/>
+
+
+</head>
+<body>
+<!--<div th:include="navbar"></div>-->
+<div class="row">
+    <div class="column">
+        <div class="card" style="margin-left: 200px">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <form method="post"  th:action="@{/pay}">
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label>Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="price">Total</label>
+                            <input type="text" id="price" name="price"  th:value="${totalPrice}">
+                            <label for="currency">Currency</label>
+                            <input type="text" id="currency" name="currency" value="USD"placeholder="Enter Currency">
+                            <label for="method">Payment Method</label>
+                            <input type="text" id="method" name="method" value="PAYPAL" placeholder="Payment Method">
+                            <label for="intent">Intent</label>
+                            <input type="text" id="intent" name="intent" value="sale">
+                            <label for="description">Payment Description</label>
+                            <input type="text" id="description" name="description" placeholder="Payment Description">
+
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Continue to checkout" class="btn">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card" style="margin-right: 200px;" >
+
+            <div class="container">
+                <h4>Cart <span class="price"  style="color:black"><i class="fa fa-shopping-cart"></i> <b th:text="${amountOfProducts}"></b></span></h4>
+                <hr>
+                <th:block th:each="product : ${userProductList}">
+
+                    <p th:text="${product.product.category} + ' ' +${product.product.productName}+   '&nbsp; &nbsp; &nbsp; &nbsp;' + 'X' + ${product.quantity}"></p>
+
+                    <p><b>Price</b> <span class="price"th:text="${product.product.price} * ${product.quantity}" style="color:black"></span></p>
+                    <hr>
+                </th:block>
+
+                <p><b>Total</b> <span class="price"  th:text="${totalPrice}" style="color:black"></span></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

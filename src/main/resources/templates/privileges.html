@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Privileges</title>
+    <link rel="stylesheet" th:href="@{/css/style_2.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.3.1/css/bootstrap.min.css} "/>
+</head>
+<body>
+<main>
+    <div th:include="navbar"></div>
+
+    <div class="pos-center">
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th class="text-center">First Name</th>
+                <th class="text-center">Last Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center" rowspan="2">Actions</th>
+                <th class="text-center">Edit Panel</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${userList}">
+                <td th:text="${user.firstName}">First Name</td>
+                <td th:text="${user.lastName}">Last Name</td>
+                <td th:text="${user.email}">Email</td>
+
+                <td>
+                    <a th:href="@{'/deleteUser/' + ${user.id}}" class="btn btn-custom" style="font-weight: bold; color: red;">Delete</a>
+                </td>
+
+                <td>
+                    <a th:href="@{'/editUserStatus/' + ${user.id}}" class="btn btn-custom" style="font-weight: 500; color: lightblue;">Edit</a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+         <div class="container">
+            <div class="center">
+                <button type="button" class="btn btn-outline-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:include="footer"></div>
+</body>
+</html>
+

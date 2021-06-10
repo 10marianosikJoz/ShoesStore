@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Privileges</title>
+    <link rel="stylesheet" th:href="@{/css/style_2.css}"/>
+</head>
+<body>
+<main>
+    <div th:include="navbar"></div>
+    <div class="pos-center">
+
+
+        <form action="#" th:action="@{'/changeUserStatus/'} + ${user.id}" th:object="${user}" method="get" style="text-align: center">
+
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Block</th>
+                    <th class="text-center">Change Role</th>
+                    <th class="text-center">Role</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${user.firstName}">First Name</td>
+                    <td th:text="${user.lastName}">Last Name</td>
+                    <td th:text="${user.email}">Email</td>
+                    <td>
+                        <select th:field="*{blocked}">
+                            <option th:value="'True'" th:text="True"></option>
+                            <option th:value="'False'" th:text="False"></option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+                        <select th:field="${user.roles}" id="roles">
+                            <option th:each="role : ${roles}"
+                                    th:value="${role.id}"
+                                    th:text="${role}">
+                            </option>
+                        </select>
+                        </div>
+                    </td>
+                      <td>
+                        <span th:each="role,iterStat : ${user.roles}">
+                        <span th:text="${role}"/><th:block th:if="${!iterStat.last}">,</th:block>
+                        </span>
+                      </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="container">
+                <div class="center">
+                    <button type="submit" class="btn btn-outline-primary">Save</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</main>
+<div th:include="footer"></div>
+</body>
+</html>
+

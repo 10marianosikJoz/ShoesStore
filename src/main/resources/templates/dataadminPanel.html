@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/dataadmin.css}"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>Category</title>
+</head>
+<body>
+<main>
+<div th:include="navbar"></div>
+
+
+<div class="container">
+    <div class="container-left" style="margin-left: -200px">
+        <h1 class="my-4"></h1>
+        <div class="row">
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-add-product"
+                       role="tab" aria-controls="add-product">Add product</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-add-category"
+                       role="tab" aria-controls="add-category">Add Category</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-edit-products"
+                       role="tab" aria-controls="edit-product">Edit products</a>
+                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-edit-category"
+                       role="tab" aria-controls="edit-category">Edit category</a>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent" style="margin-top: -30px">
+
+                    <div class="tab-pane fade show active" id="list-add-product" role="tabpanel"
+                         aria-labelledby="list-home-list">
+                        <div class="product">
+                        <div th:include="product"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="list-add-category" role="tabpanel"
+                         aria-labelledby="list-profile-list">
+                        <div th:include="category"></div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="list-edit-products" role="tabpanel"
+                         aria-labelledby="list-profile-list">
+                        <div th:include="editProducts"></div>
+
+                    </div>
+                    <div class="tab-pane fade" id="list-edit-category" role="tabpanel"
+                         aria-labelledby="list-messages-list">
+                        <div th:include="editCategory"></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="footer"></div>
+</main>
+</body>
+</html>
