@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService, UserDetails {
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password!");
         }
-        if (user.getBlocked() == true) {
+        if (user.getBlocked()) {
             throw new UsernameNotFoundException("User is blocked!");
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));

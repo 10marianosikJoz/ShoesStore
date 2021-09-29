@@ -19,10 +19,6 @@ public class ShoppingCartService {
     private ShoppingCartRepository shoppingCartRepository;
 
 
-    public List<ShoppingCart> shoppingCartList() {
-        return shoppingCartRepository.findAll();
-    }
-
 
     public BigDecimal getTotalPriceOfProduct(User user) {
         List<ShoppingCart> shoppingCartList = shoppingCartRepository.findAll();
